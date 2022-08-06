@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+        }
+        .slider{
+            width:100%;
+            position:relative;
+        }
+        .slider__item{
+            width: 100%;
+            height:500px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            color:white;
+            position: absolute;
+            top:0;
+            z-index: 0;
+            opacity: 0;
+            transition: all .5s ease-in-out;
+            /* transform: scale(0.9); */
+        }
+        .slider__item:nth-child(odd){
+            background-color: #8e44ad;
+        }
+        .slider__item:nth-child(even){
+            background-color: #3498db;
+        }
+        .showing{
+            opacity: 1;
+            z-index: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div id ="slider">
+        <div class="slider__item"><h1>1</h1></div>
+        <div class="slider__item"><h1>2</h1></div>
+        <div class="slider__item"><h1>3</h1></div>
+        <div class="slider__item"><h1>4</h1></div>
+        <div class="slider__item"><h1>5</h1></div>
+    </div>
+    <script>
+        const SHOWING_CLASS = "showing"; //적용할 클래스 이름을 생성
+        const firstSlide = document.querySelector(".slider__item:first-child");
+        // firstSlide.classList.add(SHOWING_CLASS);
+        function slide(){
+            const currentSlide = document.querySelector(`.${SHOWING_CLASS}`); //현재 showing이라는 클래스가 없기 때문에 변수로 지정한 클래스 이름 사용.
+            if(currentSlide){ //처음에는 showing클래스를 가지고 있는 element가 없기 때문에 null값이 나옴
+                currentSlide.classList.remove(SHOWING_CLASS); //전에 showing클래스가 삽인된 element에 showing 클래스삭제
+                const nextSlide = currentSlide.nextElementSibling; //전 element 다음을 변수로 지정
+                if(nextSlide){ //5번째일때는 element가 존재하지 않아 false값이 된다.
+                    nextSlide.classList.add(SHOWING_CLASS);
+                } else{
+                    firstSlide.classList.add(SHOWING_CLASS); //5번째 item일 때는 다시 첫번째 item에 클래스가 추가된다.
+                }
+            }else{
+                firstSlide.classList.add(SHOWING_CLASS); //첫번째는 첫번째 slider__item에 showing클래스 추가.
+            }
+        }
+        slide()
+        setInterval(slide,2000)
+    </script>
+</body>
+</html>

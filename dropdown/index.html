@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dropbtn{
+            background-color: #4CAF50;
+            color:white;
+            padding:16px;
+            font-size:16px;
+            border:none;
+            cursor: pointer;
+        }
+        .dropbtn:hover, .dropbtn:focus{
+            background-color: #3e8e41;
+        }
+        .dropdown{
+            position:relative;
+            display: inline-block;
+            /* display:flex; */
+            /* flex-direction: column; */
+        }
+        .dropdown-content{
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+        .dropdown-content a{
+            color:black;
+            padding:12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+        .show{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Clickable Dropdown</h2>
+    <p>Click on the button to open ther dropdown menu.</p>
+
+    <div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+    <script>
+        const update = ()=>{
+            const button = document.querySelector(".dropbtn");
+            const dropdown_content = document.querySelector(".dropdown-content");
+            const myFunction = (e)=>{
+                dropdown_content.classList.toggle("show");
+            }
+            button.addEventListener("click",myFunction);
+
+            window.onclick = function(event){
+                if(!event.target.matches('.dropbtn')){
+                    dropdown_content.classList.remove('show');
+                }
+            }
+        }
+        window.addEventListener('load',update)
+    </script>
+</body>
+</html>
+
+<!-- http://www.w3bai.com/ko/howto/tryit.php?filename=tryhow_css_js_dropdown -->
