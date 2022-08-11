@@ -15,20 +15,27 @@ import { Helmet } from "react-helmet-async";
 
 const Title = styled.h1`
   font-size: 48px;
-  color: ${(props) => props.theme.titleColor};
+  color: ${(props) => props.theme.accentColor};
 `;
-
+const Loader = styled.span`
+  text-align: center;
+  display: block;
+`;
 const Container = styled.div`
   padding: 0px 20px;
   max-width: 480px;
   margin: 0 auto;
-  position:relative;
 `;
-
+const Header = styled.header`
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: ${(props)=>props.theme.ItemBgColor};
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
   border-radius: 10px;
 `;
@@ -36,6 +43,7 @@ const OverviewItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 33%;
   span:first-child {
     font-size: 10px;
     font-weight: 400;
@@ -46,39 +54,23 @@ const OverviewItem = styled.div`
 const Description = styled.p`
   margin: 20px 0px;
 `;
-
-const Loader = styled.span`
-  text-align: center;
-  display: block;
-`;
-
-const Header = styled.header`
-  height: 15vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-`;
-
 const Tabs = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 25px 0px;
   gap: 10px;
 `;
-
 const Tab = styled.span<{ isActive: boolean }>`
   text-align: center;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
-  background-color: ${(props)=>props.theme.ItemBgColor};
-  padding: 7px 0px;
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   color: ${(props) =>
-    props.isActive ? props.theme.textColor : props.theme.textColor};
+    props.isActive ? props.theme.accentColor : props.theme.textColor};
   a {
+    padding: 7px 0px;
     display: block;
   }
 `;

@@ -1,12 +1,9 @@
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle,ThemeProvider } from "styled-components";
 import Router from "./Router";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { HelmetProvider } from "react-helmet-async";
-import { ThemeProvider } from "styled-components";
-import { darktheme,whitetheme } from "./Theme";
-import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoon,faSun } from '@fortawesome/free-solid-svg-icons'
+import { darkTheme,lightTheme } from "./Theme";
+import { useState } from "react";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -73,52 +70,18 @@ a{
     color:inherit
 }
 `;
-const NavigationContainer = styled.div`
-  position:fixed;
-  top:25px;
-  left:25px;
-`
-
-const NavigationBorder = styled.div`
-  width:55px;
-  height:55px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${(props)=>props.theme.ItemBgColor};
-  color: ${(props)=>props.theme.IconColor};
-  &:hover{
-    font-size:24px;
-    transition: all 0.1s;
-  }
-  cursor: pointer;
-`
 function App() {
-
-  const [iconChange,setIconChange] = useState(true);
-  
-  function toggleButton(){
-    setIconChange((current)=>!current)
-  }
-
+  const [isDark,setIsDark] = useState(false);
+  const toggleDark = ()=> setIsDark((current)=>!current)
   return (
     <>
-    <ThemeProvider theme={iconChange ? darktheme : whitetheme}>
+    <ThemeProvider theme={darkTheme}>
       <GlobalStyle />
       <HelmetProvider>
-        <NavigationContainer onClick={()=>toggleButton()}>
-          <NavigationBorder>
-            {
-            iconChange ? <FontAwesomeIcon icon={faMoon} size="2x" /> : <FontAwesomeIcon icon={faSun} size="2x"></FontAwesomeIcon> 
-            }
-          </NavigationBorder>
-        </NavigationContainer>
         <Router/>
       </HelmetProvider>
       <ReactQueryDevtools initialIsOpen={true} />
     </ThemeProvider>
-
     </>
   );
 }

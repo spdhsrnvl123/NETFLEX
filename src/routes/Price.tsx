@@ -6,7 +6,7 @@ const Container = styled.div`
   flex-direction: column;
   border-radius: 10px;
   padding: 10px 20px;
-  background-color: ${(props)=>props.theme.ItemBgColor};
+  background-color: ${(props)=>props.theme.bgColor};
 `;
 const Content = styled.div`
   padding: 10px 0px;

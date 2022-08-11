@@ -18,8 +18,11 @@ const Chart = ({ coinId }: ChartProps) => {
   const { isLoading, data } = useQuery<ChartCoin[]>(["chart", coinId], () =>
     fetchCoinHistory(coinId)
   );
-  console.log(data);
-  return <>{coinId}</>;
+  return (
+    <>
+      
+    </>
+  );
 };
 
 export default Chart;
