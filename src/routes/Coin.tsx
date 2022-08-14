@@ -44,6 +44,7 @@ const OverviewItem = styled.div`
   flex-direction: column;
   align-items: center;
   width: 33%;
+  color:white;
   span:first-child {
     font-size: 10px;
     font-weight: 400;
@@ -166,7 +167,7 @@ function Coin() {
     ["tickers", coinId],
     () => fetchCoinTickers(coinId),
     {
-      // refetchInterval: 5000,
+      refetchInterval: 10000,
     }
   );
 

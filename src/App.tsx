@@ -4,6 +4,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { HelmetProvider } from "react-helmet-async";
 import { darkTheme,lightTheme } from "./Theme";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./routes/atoms";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -71,19 +73,19 @@ a{
 }
 `;
 function App() {
-  const [isDark,setIsDark] = useState(false);
-  const toggleDark = ()=> setIsDark((current)=>!current)
+  const isDark = useRecoilValue(isDarkAtom) //useRecoilValue는 value를 가져온다.
   return (
     <>
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={isDark? darkTheme : lightTheme}>
       <GlobalStyle />
       <HelmetProvider>
-        <Router/>
+        <Router />
       </HelmetProvider>
       <ReactQueryDevtools initialIsOpen={true} />
     </ThemeProvider>
     </>
   );
 }
+
 
 export default App;

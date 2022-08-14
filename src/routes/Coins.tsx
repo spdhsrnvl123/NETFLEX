@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 // import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+// import { useState } from "react";
 import { fetchCoins } from "../api";
 import { Helmet } from "react-helmet";
+import { useSetRecoilState } from "recoil";
+import { isDarkAtom } from "./atoms";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -20,7 +22,7 @@ const Header = styled.header`
 const CoinsList = styled.ul``;
 
 const Coin = styled.li`
-  background-color: ${(props) => props.theme.bgColor};
+  background-color: white;
   color: ${(props) => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
@@ -61,6 +63,12 @@ interface ICoin {
 }
 
 function Coins() {
+  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
+  /*
+  이 function은 value를 설정(set)하는 function이다. 
+  React의 setState와 같은 방식으로 작동한다.
+  */
 
   const { isLoading, data } = useQuery<ICoin[]>(["allCoins"], fetchCoins);
   return (
@@ -72,7 +80,7 @@ function Coins() {
       <Header>
         <Header>
           <Title>코인</Title>
-          <button>Toggle Dark Mode</button>
+          <button onClick={toggleDarkAtom} >Toggle Mode</button>
         </Header>
       </Header>
       {isLoading ? (
