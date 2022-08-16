@@ -1,11 +1,5 @@
-import { createGlobalStyle,ThemeProvider } from "styled-components";
-import Router from "./Router";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { HelmetProvider } from "react-helmet-async";
-import { darkTheme,lightTheme } from "./Theme";
-import { useState } from "react";
-import { useRecoilValue } from "recoil";
-import { isDarkAtom } from "./routes/atoms";
+import { createGlobalStyle } from "styled-components";
+import ToDoList from "./ToDoList";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -73,16 +67,10 @@ a{
 }
 `;
 function App() {
-  const isDark = useRecoilValue(isDarkAtom) //useRecoilValue는 value를 가져온다.
   return (
     <>
-    <ThemeProvider theme={isDark? darkTheme : lightTheme}>
       <GlobalStyle />
-      <HelmetProvider>
-        <Router />
-      </HelmetProvider>
-      <ReactQueryDevtools initialIsOpen={true} />
-    </ThemeProvider>
+      <ToDoList /> 
     </>
   );
 }

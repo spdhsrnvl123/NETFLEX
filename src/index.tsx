@@ -1,25 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RecoilRoot } from "recoil";
+import { darkTheme } from "./Theme";
+import { ThemeProvider } from "styled-components";
 
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-
-const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 root.render(
-  //   <React.StrictMode>
   <RecoilRoot>
-    <QueryClientProvider client={queryClient}>
-        <App />
-    </QueryClientProvider>
+    <ThemeProvider theme={darkTheme}>
+      <App />
+    </ThemeProvider>
   </RecoilRoot> //recoil을 시작하는 방법
-
-  //   </React.StrictMode>
 );
