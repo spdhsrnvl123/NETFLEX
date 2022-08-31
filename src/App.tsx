@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import ToDoList from "./ToDoList";
+import Login from "./components/Login";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -30,6 +30,8 @@ footer, header, hgroup, main, menu, nav, section {
 
 body {
   line-height: 1;
+  background-color: #1e272e;
+  /* background-color: #4B4453; */
 }
 
 menu, ol, ul {
@@ -55,12 +57,6 @@ table {
     box-sizing: border-box;
 }
 
-body {
-  background-color:${(props) => props.theme.bgColor};
-  color:${(props) => props.theme.textColor};
-  line-height: 1.2;
-}
-
 a{
     text-decoration: none;
     color:inherit
@@ -70,7 +66,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <ToDoList />
+      <Login />
     </>
   );
 }
