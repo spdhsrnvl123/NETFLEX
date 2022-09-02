@@ -1,10 +1,10 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import {useForm} from "react-hook-form"
 
 const Container = styled.div`
     height: 100vh;
-    /* overflow: hidden; */
-`
+`;
+
 const Content = styled.div`
     background-image: url("img/background.jpg");
     background-size: cover;
@@ -14,30 +14,46 @@ const Content = styled.div`
     height:100vh;
     border-radius: 500px;
     box-shadow: 0px 2px 7px 6px;
+`;
+
+const Title = styled.h1`
+    font-size:80px;
+    color: #ff3838;
+    text-align: center;
+    padding-top: 20px;
+    text-shadow: 5px -7px 1px black;
 `
+
+const Log = styled.h1`
+    color:rgb(255,255,255);
+    font-size:45px;
+    margin-top: 50px;
+    margin-left: 67px;
+`;
+
 const Form = styled.div`
+    background-color: rgba(0,0,0,0.7);
     position: absolute;
-    top:50%;
+    top:53%;
     left:50%;
-    width: 500px;
+    width: 400px;
+    height: 600px;
     transform: translate(-50%,-50%);
-`
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 7px rgba(0,0,0,0.7);
+`;
+
 const Button = styled.button`
-    background-color: transparent;
-    width: 250px;
-    border-radius: 50px;
-    /* border:0; */
-    font-size:18px;
-    height: 30px;
+    width:270px;
+    height: 40px;
+    margin-top: 30px;
+    color:white;
+    background-color: #ff3838;
+    font-size: 18px;
+    border-radius: 5px;
+    /* box-shadow: 1px -0.5px 1px black; */
     cursor: pointer;
-`
-const ButtonII = styled(Button)`
-background-color: transparent;
-border: 0;
-width: 110px;
-border-radius: 50px;
-/* border:0; */
-height: 30px;
+    font-weight: bold;
 `
 
 interface IForm{
@@ -51,15 +67,16 @@ const Login = ()=>{
     const onValid = (data:IForm)=>{
         alert("Welcome!")
     }
+    
     return (
         <Container>
             <Content>
+                <Title>NetStatus</Title>
                 <Form onSubmit={handleSubmit(onValid)}>
-                <h1 style={{textAlign:"center",fontSize:"90px",marginBottom:"20px",color:"black"}}>Welcome!</h1> 
-                <form style={{display:"flex",flexDirection:"column",alignItems:"center",marginBottom:"20px"}}>
-                    <label style={{padding:"10px"}}>
-                    Username : <input 
-                    style={{width:"230px",height:"30px",fontSize:"18px"}}
+                <Log>Login</Log>
+                <form style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",marginTop:"30px"}}>
+                    <input 
+                    style={{width:"270px",height:"40px",fontSize:"16px",backgroundColor:"#2C3A47",border:"0",padding:"10px"}}
                     {...register("username",{
                         required:"Username is required",
                         pattern : {
@@ -67,28 +84,26 @@ const Login = ()=>{
                             message : "Only naver.com emails allowed"
                         }
                     })}
-                    placeholder = "Email"
+                    placeholder = "Email address or Phone number"
                     />
-                    </label>
-                    <span style={{marginBottom:"10px",color:"red"}}>{errors.username?.message}</span>
-                    <label style={{paddingBottom:"20px"}}>
-                    Password : <input
+                    <span style={{height:"30px",paddingTop:"8px",color:"gray"}}>{errors.username?.message}</span>
+                    <input
                     type ="password"
-                    style={{width:"230px",height:"30px",fontSize:"18px"}} 
+                    style={{width:"270px",height:"40px",fontSize:"16px",backgroundColor:"#2C3A47",border:"0",padding:"10px"}}
                     {...register("password",{
                         required:"write here"
                     })}
                     placeholder = "Password"
                     />
-                    </label>
-                    <span style={{marginTop:"-11px",marginBottom:"10px",color:"red"}}>{errors.password?.message}</span>
-                    <Button>LOG IN</Button>
+                    <span style={{height:"10px",paddingTop:"8px",color:"gray"}}>{errors.password?.message}</span>
+                    <Button>LogIn</Button>
                 </form>
-                <div style={{display:"flex" ,justifyContent:"center"}}>
-                    <ButtonII>find ID</ButtonII>
-                    <ButtonII>Forgot your password</ButtonII>
-                </div>
-                <h1 style={{textAlign:"center",padding:"25px"}}>Sign Up</h1>
+                    <br />
+                    <label style={{marginLeft:"60px",color:"gray"}}><input type="checkbox"/>Save login information</label>
+                    <p>Need help?</p>
+                <p>log in with facebook</p>
+                <p>Not a NetStats member?</p><span>Sign up now</span>
+                <p>This page is protected by Google reCAPTCHA to confirm that you are not a robot.</p><span>자세히 알아보기</span>
                 </Form>
             </Content>
         </Container>
