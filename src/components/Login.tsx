@@ -9,20 +9,20 @@ const Content = styled.div`
     background-image: url("img/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    width: 80%;
+    /* width: 80%; */
     margin: 0 auto;
     height:100vh;
-    border-radius: 500px;
+    /* border-radius: 500px; */
     box-shadow: 0px 2px 7px 6px;
 `;
 
-const Title = styled.h1`
-    font-size:80px;
-    color: #ff3838;
-    text-align: center;
-    padding-top: 20px;
-    text-shadow: 5px -7px 1px black;
-`
+// const Title = styled.h1`
+//     font-size:67px;
+//     color: yellow;
+//     text-align: center;
+//     padding-top: 30px;
+//     /* text-shadow: 7px -4px 1px black; */
+// `
 
 const Log = styled.h1`
     color:rgb(255,255,255);
@@ -34,13 +34,12 @@ const Log = styled.h1`
 const Form = styled.div`
     background-color: rgba(0,0,0,0.7);
     position: absolute;
-    top:53%;
+    top:50%;
     left:50%;
     width: 400px;
     height: 600px;
     transform: translate(-50%,-50%);
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 7px rgba(0,0,0,0.7);
+    box-shadow: 0px 0px 10px 7px rgba(0,0,0,0.3);
 `;
 
 const Button = styled.button`
@@ -51,8 +50,9 @@ const Button = styled.button`
     background-color: #ff3838;
     font-size: 18px;
     border-radius: 5px;
-    /* box-shadow: 1px -0.5px 1px black; */
+    box-shadow: 1px .5px 1px black;
     cursor: pointer;
+    border:0;
     font-weight: bold;
 `
 
@@ -70,8 +70,9 @@ const Login = ()=>{
     
     return (
         <Container>
+            <img src="/img/N.png" alt="img" style={{width:"255px",position:"absolute",top:"-20px",left:"0px"}} />
             <Content>
-                <Title>NetStatus</Title>
+                {/* <Title>Welcome!!</Title> */}
                 <Form onSubmit={handleSubmit(onValid)}>
                 <Log>Login</Log>
                 <form style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",marginTop:"30px"}}>

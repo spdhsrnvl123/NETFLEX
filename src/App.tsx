@@ -30,8 +30,9 @@ footer, header, hgroup, main, menu, nav, section {
 
 body {
   line-height: 1;
-  background-color: #1e272e;
-  /* background-color: #4B4453; */
+  /* background-color: #1e272e9d; */
+  background-color: rgba(0,0,0,0.9);
+  /* background-color: #252325; */
 }
 
 menu, ol, ul {
