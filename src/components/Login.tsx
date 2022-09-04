@@ -6,7 +6,7 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-    background-image: url("img/background.jpg");
+    background-image: url("img/LoginBackground.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     /* width: 80%; */
@@ -32,7 +32,7 @@ const Log = styled.h1`
 `;
 
 const Form = styled.div`
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.9);
     position: absolute;
     top:50%;
     left:50%;
