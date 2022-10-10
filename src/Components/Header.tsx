@@ -96,15 +96,6 @@ const logoVariants = {
     },
 }
 
-const navVariants = {
-  top:{
-    backgroundColor : "rgba(0,0,0,0)",
-  },
-  scroll:{
-    backgroundColor : "rgba(0,0,0,1)"
-  }
-}
-
 function Header() {
     const [ searchOpen, setSearchOpen ] = useState(false);
     const homeMatch = useMatch("/")
@@ -128,7 +119,7 @@ function Header() {
 
     const navVariants ={
       top:{
-        backgroundColor : "rgba(255,255,255,1)"
+        backgroundColor : "rgba(0,0,0,0)"
       },
       scroll : {
         backgroundColor : "rgba(0,0,0,1)"
